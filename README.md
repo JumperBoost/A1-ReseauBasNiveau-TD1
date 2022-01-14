@@ -62,13 +62,13 @@ Les variables en C sont déclarées en indiquant leur *type*, suivi du nom de la
 **Remarque :** Dans l'exemple, «`int entier, tab[10]`» définit un entier `nombre` ainsi qu'un tableau contenant 10 entiers nommé `tab`. La notation «`*mot`» de la deuxième ligne est également spéciale, nous y reviendrons par la suite.  
   
 On peut bien sûr définir des fonctions :  
-```c  
+```c
 int mult(int a, int b) {
     return a*b;
 }  
 ```  
 La syntaxe générale d'une fonction est :  
-```c  
+```
 <type du résultat> <nom de fonction> (<type1> <nom1>, <type2> <nom2>, ...) {  
     ...  
 }  
