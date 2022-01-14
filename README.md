@@ -7,7 +7,7 @@ Ce TD est une rapide introduction au C. Beaucoup de concepts sont introduits san
 ### Premier exemple  
   
 Voici un exemple simple de programme en C :  
-```C  
+```c
 #include <stdio.h>  
 int main() {  
     printf("Youpi !\n");
@@ -34,7 +34,7 @@ Il existe de nombreuses bibliothèques disponibles en C, avec énormément de fo
 ### Structure générale  
   
 Un programme en C commence généralement par l'inclusion d'autres fichiers nécessaires (bibliothèques définissant des fonctions ou des types) :  
-```C  
+```c  
 #include <stdio.h>  
 #include "unfichier"  
 ```  
@@ -42,7 +42,7 @@ Un programme en C commence généralement par l'inclusion d'autres fichiers néc
 La différence entre les inclusions avec `<>` et `""` est que la première syntaxe recherche le fichier à inclure dans les répertoires standards du système (que le compilateur connaît) tandis que la seconde recherche dans le répertoire courant (ou le répertoire explicitement mentionné entre les guillemets).  
   
 On peut également définir (en général en début de programme) des constantes pour le pré-compilateur :  
-```C  
+```c  
 #define NBCASES 100  
 #define TEXTE "Tralala"  
 ```  
@@ -52,7 +52,7 @@ La syntaxe de ces définitions est «`#define <nom> <valeur>`». Cela ne défini
 5. Modifiez le programme `simple.c` en définissant une constante `MESSAGE` ayant pour valeur «`"Super\n"`», et en passant cette constante comme argument à la fonction `printf`. Compilez et exécutez le programme.  
   
 On peut également définir des *variables globales* en les déclarant en dehors de toute fonction (typiquement au début du programme, après les inclusions et les définitions de constantes) :  
-```C  
+```c  
 float x;  
 char carac, *mot;  
 int entier, tab[10];  
@@ -62,13 +62,13 @@ Les variables en C sont déclarées en indiquant leur *type*, suivi du nom de la
 **Remarque :** Dans l'exemple, «`int entier, tab[10]`» définit un entier `nombre` ainsi qu'un tableau contenant 10 entiers nommé `tab`. La notation «`*mot`» de la deuxième ligne est également spéciale, nous y reviendrons par la suite.  
   
 On peut bien sûr définir des fonctions :  
-```C  
+```c  
 int mult(int a, int b) {
     return a*b;
 }  
 ```  
 La syntaxe générale d'une fonction est :  
-```C  
+```c  
 <type du résultat> <nom de fonction> (<type1> <nom1>, <type2> <nom2>, ...) {  
     ...  
 }  
@@ -82,7 +82,7 @@ Enfin, tout programme en C doit contenir une fonction appelée «`main`» dont l
 6. Définissez une fonction `dbl` qui prend en argument un entier et renvoie le double de cet entier. Modifiez la fonction `main` pour qu'elle affiche le résultat de `dbl(4)` (ça devrait être 8...).  
      
    **Indication :** Pour afficher un entier, il faut utiliser le code «`%i`» dans la fonction `printf` puis donner l'entier à afficher. Par exemple :
-    ```C
+    ```c
     printf("résultat: %i\n", a);
     ```
     si `a` est un entier.  
@@ -91,7 +91,7 @@ Enfin, tout programme en C doit contenir une fonction appelée «`main`» dont l
   
 Les types de base en C sont :  
 - `char` : un octet représentant un caractère. Pour décrire la valeur d'un caractère, on le place entre guillemets simples (attention, le nom de la variable n'est pas entre guillemets, mais le caractère qu'il faut mettre comme valeur l'est) :  
-    ```C  
+    ```c  
     char c = 'A';
     ```
 - `int` : un nombre entier dont la taille correspond à celle des entiers du système d'exploitation (en général 4 octets) ;  
@@ -99,12 +99,12 @@ Les types de base en C sont :
 - `double` : un nombre en virgule flottante en double précision (8 octets).  
   
 Pour déclarer un tableau de valeurs, on ajoute la taille du tableau entre crochets après le nom de la variable :  
-```C  
+```c  
 int tab[12];  
 float autre_tab[20];  
 ```  
 On peut accéder aux éléments du tableau en indiquant l'indice entre crochets également :  
-```C  
+```c  
 tab[0] = 15;  
 tab[1] = tab[0] + 2;  
 printf("Valeur : %i\n", tab[1]);  
@@ -116,7 +116,7 @@ printf("Valeur : %i\n", tab[1]);
    Que remarquez-vous ? (les résultats peuvent varier d'un ordinateur à un autre et même d'une exécution à l'autre)  
      
    **Remarque :** Vous pouvez utiliser plusieurs fois le code `%i` dans un appel de `printf`, en lui donnant alors autant d'arguments supplémentaires que de codes spéciaux :  
-    ```C
+    ```c
     printf("a: %i, b: %i, c: %i\n", a, b, c);
     ```  
 Les chaînes de caractères sont des tableaux de caractères dont le dernier caractère est `'\0'` (ce qui correspond au caractère dont le numéro dans la table ASCII est *0*, et non pas le caractère qui affiche le chiffre *0* à l'écran, qui serait `'0'` en C et correspond au numéro 48).  
@@ -134,7 +134,7 @@ Ainsi, pour retrouver un objet en mémoire, il faut savoir l'adresse à laquelle
 Un *pointeur* sur un objet est une variable dont la valeur est l'adresse mémoire où se trouve l'objet. Si `ptr` est un pointeur, on désigne par «`*ptr`» l'objet pointé par `ptr`. La notation inverse de `*` est `&`. Ainsi, si `obj` est un objet (un entier, une chaîne de caractères, ou n'importe quoi d'autre), `&obj` désigne son adresse mémoire.  
   
 Lorsque l'on déclare une variable par :  
-```C  
+```c  
 int *tab;  
 ```  
 on déclare que `tab` est un pointeur, et que l'objet sur lequel il pointe (`*tab`) est un entier. `tab` est donc un pointeur sur un entier.  
@@ -142,7 +142,7 @@ on déclare que `tab` est un pointeur, et que l'objet sur lequel il pointe (`*ta
 En C, on ne manipule directement que les objets très simples (types primitifs `int`, `char`, etc.). La plupart des autres objets (tableaux, ou structures plus complexes) sont contrôlés par l'intermédiaire de pointeurs.  
   
 On considère le programme suivant :  
-```C  
+```c  
 #include <stdio.h>  
 int main() {  
     int a, *b;
@@ -163,7 +163,7 @@ Il est fortement recommandé d'utiliser l'option `-Wall` et d'écrire des progra
    **Indication :** On rappelle que le code `%i` dans la fonction `printf` sert à afficher des entiers, donc des objets de type `int`.  
   
 11. Modifiez la dernière ligne du programme en  
-    ```C
+    ```c
     printf("a = %i, b = %lu\n", a, (long unsigned) b);
     ```
     Recompilez avec l'option `-Wall` et vérifiez que le *warning* a disparu.  
@@ -187,7 +187,7 @@ La déclaration «`int tab[10];`» demande au programme de réserver l'espace m�
 13. En modifiant le programme de la question précédente, déterminez quelle est la taille d'un `float`.  
   
 14. Si l'on exécute le programme suivant, quelle devrait être la différence entre les deux valeurs affichées ?
-    ```C
+    ```c
     #include <stdio.h>
     int main() {  
         int t[2];
@@ -256,14 +256,14 @@ On peut délimiter un bloc d'instructions entre accolades (par exemple pour les 
   
 ### Conditionnelles  
   
-```C  
+```c  
 if (<expression>)  
     <instruction>
 else  
     <instruction>
 ```  
   
-```C  
+```c  
 switch (<expression>) {  
     case <valeur 1>:
         <instructions>
@@ -281,25 +281,25 @@ Si l'expression évaluée au début du bloc est égale à l'une des valeurs indi
 ### Les boucles  
   
 #### `while`
-```C
+```c
 while (<expression>) <instruction>  
 ```  
 Tant que l'expression est vraie (différente de 0), exécuter l'instruction.  
   
 #### `do`... `while`
-```C
+```c
 do <instruction> while (<expression>);  
 ```  
 Exécuter l'instruction jusqu'à ce que l'expression ne soit plus vraie (c'est très proche du `while` précédent, mais l'instruction est exécutée au moins une fois.  
   
 #### `for`
-```C  
+```c  
 for (<initialisation>; <test>; <fin de boucle>) <instruction>  
 ```  
 Initialiser la boucle en exécutant `<initialisation>`, puis tant que `<test>` est vrai, exécuter `<instruction>` suivi de `<fin de boucle>`.  
   
 Cette boucle est équivalente à  
-```C  
+```c  
 <initialisation>;  
 while (<test>) {  
  <instruction>
@@ -307,7 +307,7 @@ while (<test>) {
 }  
 ```  
 L'exemple type d'une boucle `for` est :  
-```C  
+```c  
 for (i=0; i<10; i++) {  
  ...
 }  
@@ -321,7 +321,7 @@ qui exécute le bloc d'instructions pour toutes les valeurs de `i` de 0 à 9.
 17. Écrivez un programme pour trouver le plus petit entier strictement positif qui est à la fois divisible par 260 et 152.  
   
 Le programme suivant permet de lire une chaîne de caractères entrée par l'utilisateur au clavier et de l'afficher à l'écran. Pour plus d'information concernant les fonctions utilisées, reportez-vous au manuel (`man fgets` par exemple) :  
-```C  
+```c  
 #include <stdio.h>  
 int main() {  
     char chaine[80];
@@ -344,7 +344,7 @@ Il est possible de définir en C des objets appelés *structures* contenant un c
   
 Par exemple, on peut définir une structure `Personne` contenant une chaîne de caractères `nom`, un entier `âge` et un nombre à virgule flottante `taille` comme ceci :  
   
-```C
+```c
 struct Personne {
     char *nom;
     int age;
@@ -354,7 +354,7 @@ struct Personne {
   
 La définition précédente permet d'utiliser le type «`struct Personne`», c'est-à-dire qu'on peut créer des variables ayant cette spécification. On accède aux différents éléments de la structure par la notation pointée (comme les attributs d'objets en Java) :  
   
-```C  
+```c  
 struct Personne p;  
 char nom[] = "Guybrush";  
 p.nom = nom;  
@@ -367,7 +367,7 @@ En mémoire, une structure contient toutes les valeurs de ses champs l'une aprè
 Ainsi, dans l'exemple, la taille complète d'un objet de type `struct Personne` est 8 + 4 + 4 = 16 octets (sur un système en 64 bits, les pointeurs occupent 8 octets). 
 
 Vous pouvez vérifier la taille occupée en mémoire par un objet en utilisant l'instruction `sizeof` (il est possible que ce code produise des *warnings* car le type de retour de l'instruction `sizeof` est un type nommé `size_t` qui peut être soit un entier non signé soit un entier long non signé). Pour éviter les *warnings* il faudrait *caster* toutes les valeurs renvoyées par `sizeof` en `int`, mais c'est un peu lourd pour les besoins de l'exercice) :  
-```C  
+```c  
 printf("chaine: %i, entier: %i, flottant: %i, personne: %i\n",
     sizeof (char*),
     sizeof (int),
