@@ -89,7 +89,7 @@ Enfin, tout programme en C doit contenir une fonction appelée «`main`» dont l
   
 ## Les types  
   
-Les types de base en C sont :  
+Quelques types de base en C :  
 - `char` : un octet représentant un caractère. Pour décrire la valeur d'un caractère, on le place entre guillemets simples (attention, le nom de la variable n'est pas entre guillemets, mais le caractère qu'il faut mettre comme valeur l'est) :  
     ```c  
     char c = 'A';
