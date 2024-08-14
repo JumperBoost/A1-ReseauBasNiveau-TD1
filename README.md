@@ -1,3 +1,5 @@
+![](resources/logo.jpeg)
+
 # TD n°1 - Introduction à la programmation en C  
   
 Ce TD est une rapide introduction au C. Beaucoup de concepts sont introduits sans que nous ayons le temps de les développer. Vous êtes fortement encouragés à expérimenter par vous même (en modifiant les programmes proposés pour tester les cas de figures qui vous viennent à l'esprit) et à poser des questions à votre chargé de TD qui est justement là pour y répondre.  
